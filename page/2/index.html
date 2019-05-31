@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ART," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,24 +84,12 @@
 
 
 
-<meta name="description" content="半小时　
-
-心得：　有进步问题：　要分清主次　增加细节">
-<meta property="og:type" content="article">
-<meta property="og:title" content="习作2">
-<meta property="og:url" content="http://yoursite.com/2016/11/08/习作2/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Stay Foolish">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Stay Foolish">
-<meta property="og:description" content="半小时　
-
-心得：　有进步问题：　要分清主次　增加细节">
-<meta property="og:image" content="http://yoursite.com/images/7.11.2016.jpg">
-<meta property="og:updated_time" content="2019-05-30T10:39:31.993Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="习作2">
-<meta name="twitter:description" content="半小时　
-
-心得：　有进步问题：　要分清主次　增加细节">
-<meta name="twitter:image" content="http://yoursite.com/images/7.11.2016.jpg">
+<meta name="twitter:title" content="Stay Foolish">
 
 
 
@@ -129,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/08/习作2/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
 
 
 
 
-  <title> 习作2 | Stay Foolish </title>
+  <title> Stay Foolish </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -156,7 +144,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -257,9 +247,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -268,7 +258,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/08/习作2/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/01/linux_tips/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="fuyunfei">
@@ -292,7 +282,10 @@
             
             
               
-                习作2
+                
+                <a class="post-title-link" href="/2016/11/01/linux_tips/" itemprop="url">
+                  ffmpeg 示例
+                </a>
               
             
           </h1>
@@ -307,8 +300,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-08T14:15:33+00:00">
-                2016-11-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-01T14:13:10+00:00">
+                2016-11-01
               </time>
             
 
@@ -317,28 +310,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sketch/" itemprop="url" rel="index">
-                    <span itemprop="name">sketch</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -365,71 +336,68 @@
       
 
       
-        <h2 id="半小时"><a href="#半小时" class="headerlink" title="半小时　"></a>半小时　</h2><p><img src="/images/7.11.2016.jpg" alt="习作"></p>
+        
+          
+            <h1 id="frame的选取"><a href="#frame的选取" class="headerlink" title="frame的选取"></a>frame的选取</h1><h2 id="vframes-option"><a href="#vframes-option" class="headerlink" title="vframes option"></a>vframes option</h2><p>Output a single frame from the video into an image file:</p>
 <blockquote>
-<p>心得：　有进步<br>问题：　要分清主次　增加细节　</p>
+<p>ffmpeg -i input.flv -ss 00:00:14.435 -vframes 1 out.png</p>
 </blockquote>
+<h2 id="fps-video-filter"><a href="#fps-video-filter" class="headerlink" title="fps video filter"></a>fps video filter</h2><p>Output one image every second, named out1.png, out2.png, out3.png, etc.</p>
+<blockquote>
+<p>ffmpeg -i input.flv -vf fps=1 out%d.png</p>
+</blockquote>
+<p>Output one image every minute, named img001.jpg, img002.jpg, img003.jpg, etc. The %03d dictates that the ordinal number of each output image will be formatted using 3 digits.</p>
+<blockquote>
+<p>ffmpeg -i myvideo.avi -vf fps=1/60 img%03d.jpg</p>
+</blockquote>
+<p>Output one image every ten minutes:</p>
+<blockquote>
+<p>ffmpeg -i test.flv -vf fps=1/600 thumb%04d.bmp</p>
+</blockquote>
+<h2 id="select-video-filter"><a href="#select-video-filter" class="headerlink" title="select video filter"></a>select video filter</h2><p>Output one image for every I-frame:</p>
+<blockquote>
+<p>ffmpeg -i input.flv -vf “select=’eq(pict_type,PICT_TYPE_I)’” -vsync vfr thumb%04d.png</p>
+</blockquote>
+<h1 id="convert-to-audio"><a href="#convert-to-audio" class="headerlink" title="convert to audio"></a>convert to audio</h1><blockquote>
+<p>ffmpeg -i input.mp4 output.avi</p>
+</blockquote>
+<p>更多： <a href="https://ffmpeg.org/" target="_blank" rel="external">https://ffmpeg.org/</a></p>
 
+          
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/ART/" rel="tag"># ART</a>
-          
-        </div>
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/11/06/习作1/" rel="next" title="习作1">
-                <i class="fa fa-chevron-left"></i> 习作1
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/13/paper-review-for-rosemailing/" rel="prev" title="stroke extraction / overlapping">
-                stroke extraction / overlapping <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
           
           </div>
@@ -437,10 +405,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -460,17 +424,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -526,22 +481,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#半小时"><span class="nav-number">1.</span> <span class="nav-text">半小时　</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
@@ -641,10 +580,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
 
   
 
@@ -676,10 +611,6 @@
 
   
 
-  
-      <!-- UY BEGIN -->
-      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
-      <!-- UY END -->
   
 
 
